@@ -1,0 +1,57 @@
+﻿@model IEnumerable<HQT_CSDL.Models.GIAODICH>
+
+@{
+    ViewBag.Title = "LSGD";
+}
+
+<h2>LSGD</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NGAYGIAODICH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SOTIENGD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LOAIHINHGD.LOAIHINHGIAODICH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NHANVIEN.HOTEN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SOTIETKIEM.MAKH)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NGAYGIAODICH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SOTIENGD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LOAIHINHGD.LOAIHINHGIAODICH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NHANVIEN.HOTEN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SOTIETKIEM.MAKH)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MAGD }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MAGD }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MAGD })
+        </td>
+    </tr>
+}
+
+</table>

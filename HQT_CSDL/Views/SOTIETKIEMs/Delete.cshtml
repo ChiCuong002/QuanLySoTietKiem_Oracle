@@ -1,0 +1,104 @@
+﻿@model HQT_CSDL.Models.SOTIETKIEM
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>SOTIETKIEM</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NGAYMOSO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NGAYMOSO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NGAYDENHAN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NGAYDENHAN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SOTIENGUI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SOTIENGUI)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KYHAN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KYHAN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LAISUAT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LAISUAT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TINHTRANG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TINHTRANG)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NGAYLANHLAIGANNHAT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NGAYLANHLAIGANNHAT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KHACHHANG.HOTEN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KHACHHANG.HOTEN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LOAITIETKIEM.TENLOAITK)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LOAITIETKIEM.TENLOAITK)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NHANVIEN.HOTEN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NHANVIEN.HOTEN)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

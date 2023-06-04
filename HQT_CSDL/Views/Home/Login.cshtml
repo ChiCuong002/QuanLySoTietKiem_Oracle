@@ -1,0 +1,39 @@
+﻿
+@*@{
+    ViewBag.Title = "Login";
+}*@
+@*<form action="/Home/Login" method="post">
+    <input name="TENDANGNHAP" />
+    <input name="MATKHAU" type="password" />
+    <button type="submit">Đăng nhập</button>
+</form>*@
+
+@{
+    Layout = null;
+}
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Simple Login Form</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="~/Content/reset.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/structure.css">
+</head>
+<body>
+    <form class="box login" action="/Home/Login" method="post">
+        @if (ViewBag.Msg != null)
+        {
+        <h6 style="color:red">@ViewBag.Msg</h6>
+        }
+        <fieldset class="boxBody">
+            <label>Username</label>
+            <input name="TENDANGNHAP" type="text" tabindex="1" placeholder="Username" required>
+            <label>Password</label>
+            <input name="MATKHAU" type="password" tabindex="2" placeholder="Password" required>
+        </fieldset>
+        <footer>
+            <input type="submit" class="btnLogin" value="Login" tabindex="4">
+        </footer>
+    </form>
+</body>
+</html>

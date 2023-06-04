@@ -1,0 +1,99 @@
+﻿@model HQT_CSDL.Models.SOTIETKIEM
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+
+    <h4>Tổng số tiền gửi tiết kiệm: @ViewBag.SONGAYGUI</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NGAYMOSO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NGAYMOSO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NGAYDENHAN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NGAYDENHAN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SOTIENGUI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SOTIENGUI)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KYHAN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KYHAN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LAISUAT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LAISUAT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TINHTRANG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TINHTRANG)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NGAYLANHLAIGANNHAT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NGAYLANHLAIGANNHAT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KHACHHANG.HOTEN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KHACHHANG.HOTEN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LOAITIETKIEM.TENLOAITK)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LOAITIETKIEM.TENLOAITK)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NHANVIEN.HOTEN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NHANVIEN.HOTEN)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MASTK }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

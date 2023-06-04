@@ -1,0 +1,72 @@
+﻿@model HQT_CSDL.Models.SOTIETKIEM
+
+@{
+    ViewBag.Title = "MoSo";
+}
+
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>Mở sổ tiết kiệm</h4>
+    @if (ViewBag.Msg != null)
+    {
+        <h5 style="color:green">@ViewBag.Msg</h5>
+    }
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.MAKH, "MAKH", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("MAKH", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.MAKH, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.NGAYMOSO, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="date" class="form-control" name="NGAYMOSO" value="@DateTime.Now.ToString("dd-MMM-yyyy")" />
+            @Html.ValidationMessageFor(model => model.NGAYMOSO, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.SOTIENGUI, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.SOTIENGUI, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.SOTIENGUI, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.MALOAITK, "MALOAITK", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("MALOAITK", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.MALOAITK, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.MANV, "MANV", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("MANV", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.MANV, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index") 
+
+</div>

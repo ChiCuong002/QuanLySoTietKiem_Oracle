@@ -1,0 +1,74 @@
+﻿@model HQT_CSDL.Models.SOTIETKIEM
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+<div>
+    <h4>SOTIETKIEM</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NGAYMOSO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NGAYMOSO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NGAYDENHAN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NGAYDENHAN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SOTIENGUI)
+        </dt>
+
+        <dd>
+            @String.Format("{0:N0}", Model.SOTIENGUI) VNĐ
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TINHTRANG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TINHTRANG)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KHACHHANG.HOTEN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KHACHHANG.HOTEN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LOAITIETKIEM.TENLOAITK)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LOAITIETKIEM.TENLOAITK)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NHANVIEN.HOTEN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NHANVIEN.HOTEN)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Gửi tiền tiết kiệm", "GuiTien", new { id = Model.MASTK }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Rút tiền tiết kiệm", "RutTien", new { id = Model.MASTK }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Tất toán", "TatToan", new { id = Model.MASTK }, new { @class = "btn btn-danger" })
+</p>

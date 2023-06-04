@@ -1,0 +1,888 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="18.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BIENDONGSTK">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="MASTK" Type="char" MaxLength="12" />
+          <Property Name="THANG" Type="number" Precision="38" Scale="0" />
+          <Property Name="NGAYTINH" Type="date" />
+          <Property Name="TIENGOC" Type="number" Precision="38" Scale="0" />
+          <Property Name="LAISUAT" Type="number" Precision="5" Scale="4" />
+          <Property Name="TIENLAI" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="CHUCVU">
+          <Key>
+            <PropertyRef Name="MACV" />
+          </Key>
+          <Property Name="MACV" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="TENCV" Type="varchar2" MaxLength="80" />
+        </EntityType>
+        <EntityType Name="GIAODICH">
+          <Key>
+            <PropertyRef Name="MAGD" />
+          </Key>
+          <Property Name="MAGD" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="NGAYGIAODICH" Type="date" />
+          <Property Name="SOTIENGD" Type="number" Precision="18" Scale="2" />
+          <Property Name="LOAIGD" Type="char" MaxLength="5" />
+          <Property Name="NHANVIENGD" Type="char" MaxLength="5" />
+          <Property Name="MASTK" Type="char" MaxLength="12" />
+        </EntityType>
+        <EntityType Name="KHACHHANG">
+          <Key>
+            <PropertyRef Name="MAKH" />
+          </Key>
+          <Property Name="MAKH" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="HOTEN" Type="nvarchar2" MaxLength="80" />
+          <Property Name="GIOITINH" Type="nvarchar2" MaxLength="3" />
+          <Property Name="NGAYSINH" Type="date" />
+          <Property Name="CCCD" Type="char" MaxLength="12" Nullable="false" />
+          <Property Name="DIACHI" Type="nvarchar2" MaxLength="150" />
+          <Property Name="SDT" Type="char" MaxLength="10" />
+          <Property Name="TINHTRANG" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="LOAIHINHGD">
+          <Key>
+            <PropertyRef Name="MALOAIGD" />
+          </Key>
+          <Property Name="MALOAIGD" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="LOAIHINHGIAODICH" Type="nvarchar2" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="LOAITIETKIEM">
+          <Key>
+            <PropertyRef Name="MALOAITK" />
+          </Key>
+          <Property Name="MALOAITK" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="TENLOAITK" Type="nvarchar2" MaxLength="150" />
+          <Property Name="KYHAN" Type="number" Precision="5" Scale="0" />
+          <Property Name="LAISUAT" Type="number" Precision="5" Scale="4" />
+        </EntityType>
+        <EntityType Name="NHANVIEN">
+          <Key>
+            <PropertyRef Name="MANV" />
+          </Key>
+          <Property Name="MANV" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="HOTEN" Type="nvarchar2" MaxLength="80" />
+          <Property Name="GIOITINH" Type="nvarchar2" MaxLength="3" />
+          <Property Name="NGAYSINH" Type="date" />
+          <Property Name="CCCD" Type="char" MaxLength="12" Nullable="false" />
+          <Property Name="DIACHI" Type="nvarchar2" MaxLength="150" />
+          <Property Name="SDT" Type="char" MaxLength="10" />
+          <Property Name="TINHTRANG" Type="char" MaxLength="1" />
+          <Property Name="MAQUAY" Type="char" MaxLength="5" />
+          <Property Name="MACV" Type="char" MaxLength="5" />
+          <Property Name="TENDANGNHAP" Type="varchar2" MaxLength="100" />
+          <Property Name="MATKHAU" Type="varchar2" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PHONGGD">
+          <Key>
+            <PropertyRef Name="MAPGD" />
+          </Key>
+          <Property Name="MAPGD" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="TENPGD" Type="nvarchar2" MaxLength="50" />
+          <Property Name="DIACHI" Type="nvarchar2" MaxLength="100" />
+          <Property Name="LIENHE" Type="char" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="QUAYGD">
+          <Key>
+            <PropertyRef Name="MAQUAY" />
+          </Key>
+          <Property Name="MAQUAY" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="MAPGD" Type="char" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="SOTIETKIEM">
+          <Key>
+            <PropertyRef Name="MASTK" />
+          </Key>
+          <Property Name="MASTK" Type="char" MaxLength="12" Nullable="false" />
+          <Property Name="MAKH" Type="char" MaxLength="5" />
+          <Property Name="NGAYMOSO" Type="date" />
+          <Property Name="NGAYDENHAN" Type="date" />
+          <Property Name="SOTIENGUI" Type="number" Precision="18" Scale="2" />
+          <Property Name="MALOAITK" Type="char" MaxLength="5" />
+          <Property Name="MANV" Type="char" MaxLength="5" />
+          <Property Name="TINHTRANG" Type="char" MaxLength="1" />
+        </EntityType>
+        <Association Name="SYS_C007688">
+          <End Role="PHONGGD" Type="Self.PHONGGD" Multiplicity="0..1" />
+          <End Role="QUAYGD" Type="Self.QUAYGD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PHONGGD">
+              <PropertyRef Name="MAPGD" />
+            </Principal>
+            <Dependent Role="QUAYGD">
+              <PropertyRef Name="MAPGD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C007693">
+          <End Role="QUAYGD" Type="Self.QUAYGD" Multiplicity="0..1" />
+          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QUAYGD">
+              <PropertyRef Name="MAQUAY" />
+            </Principal>
+            <Dependent Role="NHANVIEN">
+              <PropertyRef Name="MAQUAY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C007695">
+          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+          <End Role="SOTIETKIEM" Type="Self.SOTIETKIEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHACHHANG">
+              <PropertyRef Name="MAKH" />
+            </Principal>
+            <Dependent Role="SOTIETKIEM">
+              <PropertyRef Name="MAKH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C007696">
+          <End Role="LOAITIETKIEM" Type="Self.LOAITIETKIEM" Multiplicity="0..1" />
+          <End Role="SOTIETKIEM" Type="Self.SOTIETKIEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOAITIETKIEM">
+              <PropertyRef Name="MALOAITK" />
+            </Principal>
+            <Dependent Role="SOTIETKIEM">
+              <PropertyRef Name="MALOAITK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C007697">
+          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1" />
+          <End Role="SOTIETKIEM" Type="Self.SOTIETKIEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NHANVIEN">
+              <PropertyRef Name="MANV" />
+            </Principal>
+            <Dependent Role="SOTIETKIEM">
+              <PropertyRef Name="MANV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C007699">
+          <End Role="LOAIHINHGD" Type="Self.LOAIHINHGD" Multiplicity="0..1" />
+          <End Role="GIAODICH" Type="Self.GIAODICH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOAIHINHGD">
+              <PropertyRef Name="MALOAIGD" />
+            </Principal>
+            <Dependent Role="GIAODICH">
+              <PropertyRef Name="LOAIGD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C007700">
+          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1" />
+          <End Role="GIAODICH" Type="Self.GIAODICH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NHANVIEN">
+              <PropertyRef Name="MANV" />
+            </Principal>
+            <Dependent Role="GIAODICH">
+              <PropertyRef Name="NHANVIENGD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C007701">
+          <End Role="SOTIETKIEM" Type="Self.SOTIETKIEM" Multiplicity="0..1" />
+          <End Role="GIAODICH" Type="Self.GIAODICH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SOTIETKIEM">
+              <PropertyRef Name="MASTK" />
+            </Principal>
+            <Dependent Role="GIAODICH">
+              <PropertyRef Name="MASTK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C007810">
+          <End Role="CHUCVU" Type="Self.CHUCVU" Multiplicity="0..1" />
+          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CHUCVU">
+              <PropertyRef Name="MACV" />
+            </Principal>
+            <Dependent Role="NHANVIEN">
+              <PropertyRef Name="MACV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C007816">
+          <End Role="SOTIETKIEM" Type="Self.SOTIETKIEM" Multiplicity="0..1" />
+          <End Role="BIENDONGSTK" Type="Self.BIENDONGSTK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SOTIETKIEM">
+              <PropertyRef Name="MASTK" />
+            </Principal>
+            <Dependent Role="BIENDONGSTK">
+              <PropertyRef Name="MASTK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="DELETE_EMPLOYEE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PLSTK">
+          <Parameter Name="P_EMPLOYEE_ID" Type="char" Mode="In" />
+        </Function>
+        <Function Name="SP_GUITIEN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PLSTK">
+          <Parameter Name="V_SOTIENGUI" Type="number" Mode="In" />
+          <Parameter Name="V_MANV" Type="char" Mode="In" />
+          <Parameter Name="V_MASTK" Type="char" Mode="In" />
+        </Function>
+        <Function Name="SP_RUTTIEN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PLSTK">
+          <Parameter Name="V_MASTK" Type="char" Mode="In" />
+          <Parameter Name="V_SOTIEN_RUT" Type="number" Mode="In" />
+          <Parameter Name="V_MANV" Type="char" Mode="In" />
+          <Parameter Name="V_ERRORCODE" Type="number" Mode="Out" />
+        </Function>
+        <Function Name="SP_TATTOANSTK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PLSTK">
+          <Parameter Name="V_MASTK" Type="char" Mode="In" />
+          <Parameter Name="V_MANV" Type="char" Mode="In" />
+          <Parameter Name="V_KQ" Type="number" Mode="Out" />
+          <Parameter Name="V_SOTIEN" Type="number" Mode="Out" />
+        </Function>
+        <Function Name="SP_THEMNHANVIEN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PLSTK">
+          <Parameter Name="V_HOTEN" Type="nvarchar2" Mode="In" />
+          <Parameter Name="V_GIOITINH" Type="nvarchar2" Mode="In" />
+          <Parameter Name="V_NGAYSINH" Type="date" Mode="In" />
+          <Parameter Name="V_CCCD" Type="char" Mode="In" />
+          <Parameter Name="V_DIACHI" Type="nvarchar2" Mode="In" />
+          <Parameter Name="V_SDT" Type="char" Mode="In" />
+          <Parameter Name="V_MAQUAY" Type="char" Mode="In" />
+          <Parameter Name="V_TENDANGNHAP" Type="varchar2" Mode="In" />
+          <Parameter Name="V_MATKHAU" Type="varchar2" Mode="In" />
+          <Parameter Name="V_MACV" Type="char" Mode="In" />
+        </Function>
+        <Function Name="SUATHONGTINNHANVIEN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PLSTK">
+          <Parameter Name="P_MANV" Type="char" Mode="In" />
+          <Parameter Name="P_HOTEN" Type="nvarchar2" Mode="In" />
+          <Parameter Name="P_GIOITINH" Type="nvarchar2" Mode="In" />
+          <Parameter Name="P_NGAYSINH" Type="date" Mode="In" />
+          <Parameter Name="P_CCCD" Type="char" Mode="In" />
+          <Parameter Name="P_DIACHI" Type="nvarchar2" Mode="In" />
+          <Parameter Name="P_SDT" Type="char" Mode="In" />
+          <Parameter Name="P_TINHTRANG" Type="char" Mode="In" />
+          <Parameter Name="P_MAQUAY" Type="char" Mode="In" />
+        </Function>
+        <Function Name="THEM_KHACH_HANG" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PLSTK">
+          <Parameter Name="P_MAKH" Type="char" Mode="In" />
+          <Parameter Name="P_HOTEN" Type="nvarchar2" Mode="In" />
+          <Parameter Name="P_GIOITINH" Type="nvarchar2" Mode="In" />
+          <Parameter Name="P_NGAYSINH" Type="date" Mode="In" />
+          <Parameter Name="P_CCCD" Type="char" Mode="In" />
+          <Parameter Name="P_DIACHI" Type="nvarchar2" Mode="In" />
+          <Parameter Name="P_SDT" Type="char" Mode="In" />
+          <Parameter Name="P_TINHTRANG" Type="char" Mode="In" />
+        </Function>
+        <Function Name="THEM_SO_TIET_KIEM" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PLSTK">
+          <Parameter Name="P_MAKH" Type="char" Mode="In" />
+          <Parameter Name="P_NGAYMOSO" Type="date" Mode="In" />
+          <Parameter Name="P_NGAYDENHAN" Type="date" Mode="In" />
+          <Parameter Name="P_SOTIENGUI" Type="number" Mode="In" />
+          <Parameter Name="P_MALOAITK" Type="char" Mode="In" />
+          <Parameter Name="P_MANV" Type="char" Mode="In" />
+        </Function>
+        <Function Name="UPDATE_CUSTOMER_INFO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PLSTK">
+          <Parameter Name="P_MAKH" Type="char" Mode="In" />
+          <Parameter Name="P_HOTEN" Type="nvarchar2" Mode="In" />
+          <Parameter Name="P_GIOITINH" Type="nvarchar2" Mode="In" />
+          <Parameter Name="P_NGAYSINH" Type="date" Mode="In" />
+          <Parameter Name="P_CCCD" Type="char" Mode="In" />
+          <Parameter Name="P_DIACHI" Type="nvarchar2" Mode="In" />
+          <Parameter Name="P_SDT" Type="char" Mode="In" />
+          <Parameter Name="P_TINHTRANG" Type="char" Mode="In" />
+        </Function>
+        <Function Name="XOA_KHACH_HANG" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PLSTK">
+          <Parameter Name="P_MAKH" Type="char" Mode="In" />
+        </Function>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="BIENDONGSTK" EntityType="Self.BIENDONGSTK" Schema="PLSTK" store:Type="Tables" />
+          <EntitySet Name="CHUCVU" EntityType="Self.CHUCVU" Schema="PLSTK" store:Type="Tables" />
+          <EntitySet Name="GIAODICH" EntityType="Self.GIAODICH" Schema="PLSTK" store:Type="Tables" />
+          <EntitySet Name="KHACHHANG" EntityType="Self.KHACHHANG" Schema="PLSTK" store:Type="Tables" />
+          <EntitySet Name="LOAIHINHGD" EntityType="Self.LOAIHINHGD" Schema="PLSTK" store:Type="Tables" />
+          <EntitySet Name="LOAITIETKIEM" EntityType="Self.LOAITIETKIEM" Schema="PLSTK" store:Type="Tables" />
+          <EntitySet Name="NHANVIEN" EntityType="Self.NHANVIEN" Schema="PLSTK" store:Type="Tables" />
+          <EntitySet Name="PHONGGD" EntityType="Self.PHONGGD" Schema="PLSTK" store:Type="Tables" />
+          <EntitySet Name="QUAYGD" EntityType="Self.QUAYGD" Schema="PLSTK" store:Type="Tables" />
+          <EntitySet Name="SOTIETKIEM" EntityType="Self.SOTIETKIEM" Schema="PLSTK" store:Type="Tables" />
+          <AssociationSet Name="SYS_C007688" Association="Self.SYS_C007688">
+            <End Role="PHONGGD" EntitySet="PHONGGD" />
+            <End Role="QUAYGD" EntitySet="QUAYGD" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C007693" Association="Self.SYS_C007693">
+            <End Role="QUAYGD" EntitySet="QUAYGD" />
+            <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C007695" Association="Self.SYS_C007695">
+            <End Role="KHACHHANG" EntitySet="KHACHHANG" />
+            <End Role="SOTIETKIEM" EntitySet="SOTIETKIEM" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C007696" Association="Self.SYS_C007696">
+            <End Role="LOAITIETKIEM" EntitySet="LOAITIETKIEM" />
+            <End Role="SOTIETKIEM" EntitySet="SOTIETKIEM" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C007697" Association="Self.SYS_C007697">
+            <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+            <End Role="SOTIETKIEM" EntitySet="SOTIETKIEM" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C007699" Association="Self.SYS_C007699">
+            <End Role="LOAIHINHGD" EntitySet="LOAIHINHGD" />
+            <End Role="GIAODICH" EntitySet="GIAODICH" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C007700" Association="Self.SYS_C007700">
+            <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+            <End Role="GIAODICH" EntitySet="GIAODICH" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C007701" Association="Self.SYS_C007701">
+            <End Role="SOTIETKIEM" EntitySet="SOTIETKIEM" />
+            <End Role="GIAODICH" EntitySet="GIAODICH" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C007810" Association="Self.SYS_C007810">
+            <End Role="CHUCVU" EntitySet="CHUCVU" />
+            <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C007816" Association="Self.SYS_C007816">
+            <End Role="SOTIETKIEM" EntitySet="SOTIETKIEM" />
+            <End Role="BIENDONGSTK" EntitySet="BIENDONGSTK" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="GIAODICH">
+          <Key>
+            <PropertyRef Name="MAGD" />
+          </Key>
+          <Property Name="MAGD" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="NGAYGIAODICH" Type="DateTime" />
+          <Property Name="SOTIENGD" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="LOAIGD" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="NHANVIENGD" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="MASTK" Type="String" MaxLength="12" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="LOAIHINHGD" Relationship="Self.SYS_C007699" FromRole="GIAODICH" ToRole="LOAIHINHGD" />
+          <NavigationProperty Name="NHANVIEN" Relationship="Self.SYS_C007700" FromRole="GIAODICH" ToRole="NHANVIEN" />
+          <NavigationProperty Name="SOTIETKIEM" Relationship="Self.SYS_C007701" FromRole="GIAODICH" ToRole="SOTIETKIEM" />
+        </EntityType>
+        <EntityType Name="KHACHHANG">
+          <Key>
+            <PropertyRef Name="MAKH" />
+          </Key>
+          <Property Name="MAKH" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="HOTEN" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="GIOITINH" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="NGAYSINH" Type="DateTime" />
+          <Property Name="CCCD" Type="String" MaxLength="12" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="DIACHI" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="SDT" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="TINHTRANG" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="SOTIETKIEMs" Relationship="Self.SYS_C007695" FromRole="KHACHHANG" ToRole="SOTIETKIEM" />
+        </EntityType>
+        <EntityType Name="LOAIHINHGD">
+          <Key>
+            <PropertyRef Name="MALOAIGD" />
+          </Key>
+          <Property Name="MALOAIGD" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="LOAIHINHGIAODICH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="GIAODICHes" Relationship="Self.SYS_C007699" FromRole="LOAIHINHGD" ToRole="GIAODICH" />
+        </EntityType>
+        <EntityType Name="LOAITIETKIEM">
+          <Key>
+            <PropertyRef Name="MALOAITK" />
+          </Key>
+          <Property Name="MALOAITK" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TENLOAITK" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="KYHAN" Type="Int16" />
+          <Property Name="LAISUAT" Type="Decimal" Precision="5" Scale="2" />
+          <NavigationProperty Name="SOTIETKIEMs" Relationship="Self.SYS_C007696" FromRole="LOAITIETKIEM" ToRole="SOTIETKIEM" />
+        </EntityType>
+        <EntityType Name="NHANVIEN">
+          <Key>
+            <PropertyRef Name="MANV" />
+          </Key>
+          <Property Name="MANV" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="HOTEN" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="GIOITINH" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="NGAYSINH" Type="DateTime" />
+          <Property Name="CCCD" Type="String" MaxLength="12" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="DIACHI" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="SDT" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="TINHTRANG" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="MAQUAY" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="GIAODICHes" Relationship="Self.SYS_C007700" FromRole="NHANVIEN" ToRole="GIAODICH" />
+          <NavigationProperty Name="QUAYGD" Relationship="Self.SYS_C007693" FromRole="NHANVIEN" ToRole="QUAYGD" />
+          <NavigationProperty Name="SOTIETKIEMs" Relationship="Self.SYS_C007697" FromRole="NHANVIEN" ToRole="SOTIETKIEM" />
+          <Property Name="MACV" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="TENDANGNHAP" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MATKHAU" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CHUCVU" Relationship="Model.SYS_C007810" FromRole="NHANVIEN" ToRole="CHUCVU" />
+        </EntityType>
+        <EntityType Name="PHONGGD">
+          <Key>
+            <PropertyRef Name="MAPGD" />
+          </Key>
+          <Property Name="MAPGD" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TENPGD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DIACHI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LIENHE" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="QUAYGDs" Relationship="Self.SYS_C007688" FromRole="PHONGGD" ToRole="QUAYGD" />
+        </EntityType>
+        <EntityType Name="QUAYGD">
+          <Key>
+            <PropertyRef Name="MAQUAY" />
+          </Key>
+          <Property Name="MAQUAY" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MAPGD" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="NHANVIENs" Relationship="Self.SYS_C007693" FromRole="QUAYGD" ToRole="NHANVIEN" />
+          <NavigationProperty Name="PHONGGD" Relationship="Self.SYS_C007688" FromRole="QUAYGD" ToRole="PHONGGD" />
+        </EntityType>
+        <EntityType Name="SOTIETKIEM">
+          <Key>
+            <PropertyRef Name="MASTK" />
+          </Key>
+          <Property Name="MASTK" Type="String" MaxLength="12" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MAKH" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="NGAYMOSO" Type="DateTime" />
+          <Property Name="NGAYDENHAN" Type="DateTime" />
+          <Property Name="SOTIENGUI" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="MALOAITK" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="MANV" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="TINHTRANG" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="GIAODICHes" Relationship="Self.SYS_C007701" FromRole="SOTIETKIEM" ToRole="GIAODICH" />
+          <NavigationProperty Name="KHACHHANG" Relationship="Self.SYS_C007695" FromRole="SOTIETKIEM" ToRole="KHACHHANG" />
+          <NavigationProperty Name="LOAITIETKIEM" Relationship="Self.SYS_C007696" FromRole="SOTIETKIEM" ToRole="LOAITIETKIEM" />
+          <NavigationProperty Name="NHANVIEN" Relationship="Self.SYS_C007697" FromRole="SOTIETKIEM" ToRole="NHANVIEN" />
+          <NavigationProperty Name="BIENDONGSTKs" Relationship="Model.SYS_C007816" FromRole="SOTIETKIEM" ToRole="BIENDONGSTK" />
+        </EntityType>
+        <Association Name="SYS_C007699">
+          <End Role="LOAIHINHGD" Type="Self.LOAIHINHGD" Multiplicity="0..1" />
+          <End Role="GIAODICH" Type="Self.GIAODICH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOAIHINHGD">
+              <PropertyRef Name="MALOAIGD" />
+            </Principal>
+            <Dependent Role="GIAODICH">
+              <PropertyRef Name="LOAIGD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C007700">
+          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1" />
+          <End Role="GIAODICH" Type="Self.GIAODICH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NHANVIEN">
+              <PropertyRef Name="MANV" />
+            </Principal>
+            <Dependent Role="GIAODICH">
+              <PropertyRef Name="NHANVIENGD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C007701">
+          <End Role="SOTIETKIEM" Type="Self.SOTIETKIEM" Multiplicity="0..1" />
+          <End Role="GIAODICH" Type="Self.GIAODICH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SOTIETKIEM">
+              <PropertyRef Name="MASTK" />
+            </Principal>
+            <Dependent Role="GIAODICH">
+              <PropertyRef Name="MASTK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C007695">
+          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+          <End Role="SOTIETKIEM" Type="Self.SOTIETKIEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHACHHANG">
+              <PropertyRef Name="MAKH" />
+            </Principal>
+            <Dependent Role="SOTIETKIEM">
+              <PropertyRef Name="MAKH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C007696">
+          <End Role="LOAITIETKIEM" Type="Self.LOAITIETKIEM" Multiplicity="0..1" />
+          <End Role="SOTIETKIEM" Type="Self.SOTIETKIEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOAITIETKIEM">
+              <PropertyRef Name="MALOAITK" />
+            </Principal>
+            <Dependent Role="SOTIETKIEM">
+              <PropertyRef Name="MALOAITK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C007693">
+          <End Role="QUAYGD" Type="Self.QUAYGD" Multiplicity="0..1" />
+          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QUAYGD">
+              <PropertyRef Name="MAQUAY" />
+            </Principal>
+            <Dependent Role="NHANVIEN">
+              <PropertyRef Name="MAQUAY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C007697">
+          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1" />
+          <End Role="SOTIETKIEM" Type="Self.SOTIETKIEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NHANVIEN">
+              <PropertyRef Name="MANV" />
+            </Principal>
+            <Dependent Role="SOTIETKIEM">
+              <PropertyRef Name="MANV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C007688">
+          <End Role="PHONGGD" Type="Self.PHONGGD" Multiplicity="0..1" />
+          <End Role="QUAYGD" Type="Self.QUAYGD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PHONGGD">
+              <PropertyRef Name="MAPGD" />
+            </Principal>
+            <Dependent Role="QUAYGD">
+              <PropertyRef Name="MAPGD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="GIAODICHes" EntityType="Self.GIAODICH" />
+          <EntitySet Name="KHACHHANGs" EntityType="Self.KHACHHANG" />
+          <EntitySet Name="LOAIHINHGDs" EntityType="Self.LOAIHINHGD" />
+          <EntitySet Name="LOAITIETKIEMs" EntityType="Self.LOAITIETKIEM" />
+          <EntitySet Name="NHANVIENs" EntityType="Self.NHANVIEN" />
+          <EntitySet Name="PHONGGDs" EntityType="Self.PHONGGD" />
+          <EntitySet Name="QUAYGDs" EntityType="Self.QUAYGD" />
+          <EntitySet Name="SOTIETKIEMs" EntityType="Self.SOTIETKIEM" />
+          <AssociationSet Name="SYS_C007699" Association="Self.SYS_C007699">
+            <End Role="LOAIHINHGD" EntitySet="LOAIHINHGDs" />
+            <End Role="GIAODICH" EntitySet="GIAODICHes" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C007700" Association="Self.SYS_C007700">
+            <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+            <End Role="GIAODICH" EntitySet="GIAODICHes" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C007701" Association="Self.SYS_C007701">
+            <End Role="SOTIETKIEM" EntitySet="SOTIETKIEMs" />
+            <End Role="GIAODICH" EntitySet="GIAODICHes" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C007695" Association="Self.SYS_C007695">
+            <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
+            <End Role="SOTIETKIEM" EntitySet="SOTIETKIEMs" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C007696" Association="Self.SYS_C007696">
+            <End Role="LOAITIETKIEM" EntitySet="LOAITIETKIEMs" />
+            <End Role="SOTIETKIEM" EntitySet="SOTIETKIEMs" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C007693" Association="Self.SYS_C007693">
+            <End Role="QUAYGD" EntitySet="QUAYGDs" />
+            <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C007697" Association="Self.SYS_C007697">
+            <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+            <End Role="SOTIETKIEM" EntitySet="SOTIETKIEMs" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C007688" Association="Self.SYS_C007688">
+            <End Role="PHONGGD" EntitySet="PHONGGDs" />
+            <End Role="QUAYGD" EntitySet="QUAYGDs" />
+          </AssociationSet>
+          <FunctionImport Name="SP_THEMNHANVIEN">
+            <Parameter Name="V_HOTEN" Mode="In" Type="String" />
+            <Parameter Name="V_GIOITINH" Mode="In" Type="String" />
+            <Parameter Name="V_NGAYSINH" Mode="In" Type="DateTime" />
+            <Parameter Name="V_CCCD" Mode="In" Type="String" />
+            <Parameter Name="V_DIACHI" Mode="In" Type="String" />
+            <Parameter Name="V_SDT" Mode="In" Type="String" />
+            <Parameter Name="V_MAQUAY" Mode="In" Type="String" />
+            <Parameter Name="V_TENDANGNHAP" Mode="In" Type="String" />
+            <Parameter Name="V_MATKHAU" Mode="In" Type="String" />
+            <Parameter Name="V_MACV" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="BIENDONGSTKs" EntityType="Model.BIENDONGSTK" />
+          <EntitySet Name="CHUCVUs" EntityType="Model.CHUCVU" />
+          <AssociationSet Name="SYS_C007816" Association="Model.SYS_C007816">
+            <End Role="SOTIETKIEM" EntitySet="SOTIETKIEMs" />
+            <End Role="BIENDONGSTK" EntitySet="BIENDONGSTKs" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C007810" Association="Model.SYS_C007810">
+            <End Role="CHUCVU" EntitySet="CHUCVUs" />
+            <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+          </AssociationSet>
+          <FunctionImport Name="SP_GUITIEN">
+            <Parameter Name="V_SOTIENGUI" Mode="In" Type="Decimal" />
+            <Parameter Name="V_MANV" Mode="In" Type="String" />
+            <Parameter Name="V_MASTK" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_TATTOANSTK">
+            <Parameter Name="V_MASTK" Mode="In" Type="String" />
+            <Parameter Name="V_MANV" Mode="In" Type="String" />
+            <Parameter Name="V_KQ" Mode="Out" Type="Decimal" />
+            <Parameter Name="V_SOTIEN" Mode="Out" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="SP_RUTTIEN">
+            <Parameter Name="V_MASTK" Mode="In" Type="String" />
+            <Parameter Name="V_SOTIEN_RUT" Mode="In" Type="Decimal" />
+            <Parameter Name="V_MANV" Mode="In" Type="String" />
+            <Parameter Name="V_ERRORCODE" Mode="Out" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="THEM_SO_TIET_KIEM">
+            <Parameter Name="P_MAKH" Mode="In" Type="String" />
+            <Parameter Name="P_NGAYMOSO" Mode="In" Type="DateTime" />
+            <Parameter Name="P_NGAYDENHAN" Mode="In" Type="DateTime" />
+            <Parameter Name="P_SOTIENGUI" Mode="In" Type="Decimal" />
+            <Parameter Name="P_MALOAITK" Mode="In" Type="String" />
+            <Parameter Name="P_MANV" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SUATHONGTINNHANVIEN">
+            <Parameter Name="P_MANV" Mode="In" Type="String" />
+            <Parameter Name="P_HOTEN" Mode="In" Type="String" />
+            <Parameter Name="P_GIOITINH" Mode="In" Type="String" />
+            <Parameter Name="P_NGAYSINH" Mode="In" Type="DateTime" />
+            <Parameter Name="P_CCCD" Mode="In" Type="String" />
+            <Parameter Name="P_DIACHI" Mode="In" Type="String" />
+            <Parameter Name="P_SDT" Mode="In" Type="String" />
+            <Parameter Name="P_TINHTRANG" Mode="In" Type="String" />
+            <Parameter Name="P_MAQUAY" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DELETE_EMPLOYEE">
+          <Parameter Name="P_EMPLOYEE_ID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UPDATE_CUSTOMER_INFO">
+            <Parameter Name="P_MAKH" Mode="In" Type="String" />
+            <Parameter Name="P_HOTEN" Mode="In" Type="String" />
+            <Parameter Name="P_GIOITINH" Mode="In" Type="String" />
+            <Parameter Name="P_NGAYSINH" Mode="In" Type="DateTime" />
+            <Parameter Name="P_CCCD" Mode="In" Type="String" />
+            <Parameter Name="P_DIACHI" Mode="In" Type="String" />
+            <Parameter Name="P_SDT" Mode="In" Type="String" />
+            <Parameter Name="P_TINHTRANG" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="XOA_KHACH_HANG">
+          <Parameter Name="P_MAKH" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="THEM_KHACH_HANG">
+            <Parameter Name="P_MAKH" Mode="In" Type="String" />
+            <Parameter Name="P_HOTEN" Mode="In" Type="String" />
+            <Parameter Name="P_GIOITINH" Mode="In" Type="String" />
+            <Parameter Name="P_NGAYSINH" Mode="In" Type="DateTime" />
+            <Parameter Name="P_CCCD" Mode="In" Type="String" />
+            <Parameter Name="P_DIACHI" Mode="In" Type="String" />
+            <Parameter Name="P_SDT" Mode="In" Type="String" />
+            <Parameter Name="P_TINHTRANG" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="BIENDONGSTK">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="MASTK" Type="String" MaxLength="12" FixedLength="true" Unicode="false" />
+          <Property Name="THANG" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="NGAYTINH" Type="DateTime" />
+          <Property Name="TIENGOC" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="LAISUAT" Type="Decimal" Precision="5" Scale="4" />
+          <Property Name="TIENLAI" Type="Decimal" Precision="38" Scale="0" />
+          <NavigationProperty Name="SOTIETKIEM" Relationship="Model.SYS_C007816" FromRole="BIENDONGSTK" ToRole="SOTIETKIEM" />
+        </EntityType>
+        <EntityType Name="CHUCVU">
+          <Key>
+            <PropertyRef Name="MACV" />
+          </Key>
+          <Property Name="MACV" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="TENCV" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="NHANVIENs" Relationship="Model.SYS_C007810" FromRole="CHUCVU" ToRole="NHANVIEN" />
+        </EntityType>
+        <Association Name="SYS_C007816">
+          <End Type="Model.SOTIETKIEM" Role="SOTIETKIEM" Multiplicity="0..1" />
+          <End Type="Model.BIENDONGSTK" Role="BIENDONGSTK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SOTIETKIEM">
+              <PropertyRef Name="MASTK" />
+            </Principal>
+            <Dependent Role="BIENDONGSTK">
+              <PropertyRef Name="MASTK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C007810">
+          <End Type="Model.CHUCVU" Role="CHUCVU" Multiplicity="0..1" />
+          <End Type="Model.NHANVIEN" Role="NHANVIEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CHUCVU">
+              <PropertyRef Name="MACV" />
+            </Principal>
+            <Dependent Role="NHANVIEN">
+              <PropertyRef Name="MACV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities1">
+          <EntitySetMapping Name="GIAODICHes">
+            <EntityTypeMapping TypeName="Model.GIAODICH">
+              <MappingFragment StoreEntitySet="GIAODICH">
+                <ScalarProperty Name="MAGD" ColumnName="MAGD" />
+                <ScalarProperty Name="NGAYGIAODICH" ColumnName="NGAYGIAODICH" />
+                <ScalarProperty Name="SOTIENGD" ColumnName="SOTIENGD" />
+                <ScalarProperty Name="LOAIGD" ColumnName="LOAIGD" />
+                <ScalarProperty Name="NHANVIENGD" ColumnName="NHANVIENGD" />
+                <ScalarProperty Name="MASTK" ColumnName="MASTK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KHACHHANGs">
+            <EntityTypeMapping TypeName="Model.KHACHHANG">
+              <MappingFragment StoreEntitySet="KHACHHANG">
+                <ScalarProperty Name="MAKH" ColumnName="MAKH" />
+                <ScalarProperty Name="HOTEN" ColumnName="HOTEN" />
+                <ScalarProperty Name="GIOITINH" ColumnName="GIOITINH" />
+                <ScalarProperty Name="NGAYSINH" ColumnName="NGAYSINH" />
+                <ScalarProperty Name="CCCD" ColumnName="CCCD" />
+                <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="TINHTRANG" ColumnName="TINHTRANG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOAIHINHGDs">
+            <EntityTypeMapping TypeName="Model.LOAIHINHGD">
+              <MappingFragment StoreEntitySet="LOAIHINHGD">
+                <ScalarProperty Name="MALOAIGD" ColumnName="MALOAIGD" />
+                <ScalarProperty Name="LOAIHINHGIAODICH" ColumnName="LOAIHINHGIAODICH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOAITIETKIEMs">
+            <EntityTypeMapping TypeName="Model.LOAITIETKIEM">
+              <MappingFragment StoreEntitySet="LOAITIETKIEM">
+                <ScalarProperty Name="MALOAITK" ColumnName="MALOAITK" />
+                <ScalarProperty Name="TENLOAITK" ColumnName="TENLOAITK" />
+                <ScalarProperty Name="KYHAN" ColumnName="KYHAN" />
+                <ScalarProperty Name="LAISUAT" ColumnName="LAISUAT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NHANVIENs">
+            <EntityTypeMapping TypeName="Model.NHANVIEN">
+              <MappingFragment StoreEntitySet="NHANVIEN">
+                <ScalarProperty Name="MATKHAU" ColumnName="MATKHAU" />
+                <ScalarProperty Name="TENDANGNHAP" ColumnName="TENDANGNHAP" />
+                <ScalarProperty Name="MACV" ColumnName="MACV" />
+                <ScalarProperty Name="MANV" ColumnName="MANV" />
+                <ScalarProperty Name="HOTEN" ColumnName="HOTEN" />
+                <ScalarProperty Name="GIOITINH" ColumnName="GIOITINH" />
+                <ScalarProperty Name="NGAYSINH" ColumnName="NGAYSINH" />
+                <ScalarProperty Name="CCCD" ColumnName="CCCD" />
+                <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="TINHTRANG" ColumnName="TINHTRANG" />
+                <ScalarProperty Name="MAQUAY" ColumnName="MAQUAY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PHONGGDs">
+            <EntityTypeMapping TypeName="Model.PHONGGD">
+              <MappingFragment StoreEntitySet="PHONGGD">
+                <ScalarProperty Name="MAPGD" ColumnName="MAPGD" />
+                <ScalarProperty Name="TENPGD" ColumnName="TENPGD" />
+                <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+                <ScalarProperty Name="LIENHE" ColumnName="LIENHE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QUAYGDs">
+            <EntityTypeMapping TypeName="Model.QUAYGD">
+              <MappingFragment StoreEntitySet="QUAYGD">
+                <ScalarProperty Name="MAQUAY" ColumnName="MAQUAY" />
+                <ScalarProperty Name="MAPGD" ColumnName="MAPGD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SOTIETKIEMs">
+            <EntityTypeMapping TypeName="Model.SOTIETKIEM">
+              <MappingFragment StoreEntitySet="SOTIETKIEM">
+                <ScalarProperty Name="MASTK" ColumnName="MASTK" />
+                <ScalarProperty Name="MAKH" ColumnName="MAKH" />
+                <ScalarProperty Name="NGAYMOSO" ColumnName="NGAYMOSO" />
+                <ScalarProperty Name="NGAYDENHAN" ColumnName="NGAYDENHAN" />
+                <ScalarProperty Name="SOTIENGUI" ColumnName="SOTIENGUI" />
+                <ScalarProperty Name="MALOAITK" ColumnName="MALOAITK" />
+                <ScalarProperty Name="MANV" ColumnName="MANV" />
+                <ScalarProperty Name="TINHTRANG" ColumnName="TINHTRANG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_THEMNHANVIEN" FunctionName="Model.Store.SP_THEMNHANVIEN" />
+          <EntitySetMapping Name="BIENDONGSTKs">
+            <EntityTypeMapping TypeName="Model.BIENDONGSTK">
+              <MappingFragment StoreEntitySet="BIENDONGSTK">
+                <ScalarProperty Name="TIENLAI" ColumnName="TIENLAI" />
+                <ScalarProperty Name="LAISUAT" ColumnName="LAISUAT" />
+                <ScalarProperty Name="TIENGOC" ColumnName="TIENGOC" />
+                <ScalarProperty Name="NGAYTINH" ColumnName="NGAYTINH" />
+                <ScalarProperty Name="THANG" ColumnName="THANG" />
+                <ScalarProperty Name="MASTK" ColumnName="MASTK" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CHUCVUs">
+            <EntityTypeMapping TypeName="Model.CHUCVU">
+              <MappingFragment StoreEntitySet="CHUCVU">
+                <ScalarProperty Name="TENCV" ColumnName="TENCV" />
+                <ScalarProperty Name="MACV" ColumnName="MACV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_GUITIEN" FunctionName="Model.Store.SP_GUITIEN" />
+          <FunctionImportMapping FunctionImportName="SP_TATTOANSTK" FunctionName="Model.Store.SP_TATTOANSTK" />
+          <FunctionImportMapping FunctionImportName="SP_RUTTIEN" FunctionName="Model.Store.SP_RUTTIEN" />
+          <FunctionImportMapping FunctionImportName="THEM_SO_TIET_KIEM" FunctionName="Model.Store.THEM_SO_TIET_KIEM" />
+          <FunctionImportMapping FunctionImportName="SUATHONGTINNHANVIEN" FunctionName="Model.Store.SUATHONGTINNHANVIEN" />
+          <FunctionImportMapping FunctionImportName="DELETE_EMPLOYEE" FunctionName="Model.Store.DELETE_EMPLOYEE" />
+          <FunctionImportMapping FunctionImportName="UPDATE_CUSTOMER_INFO" FunctionName="Model.Store.UPDATE_CUSTOMER_INFO" />
+          <FunctionImportMapping FunctionImportName="XOA_KHACH_HANG" FunctionName="Model.Store.XOA_KHACH_HANG" />
+          <FunctionImportMapping FunctionImportName="THEM_KHACH_HANG" FunctionName="Model.Store.THEM_KHACH_HANG" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

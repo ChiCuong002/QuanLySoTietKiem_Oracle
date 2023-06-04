@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "GuiTien";
+}
+
+<form action="/SoTietKiem/GuiTien" method="post" style="margin-top: 20px">
+    <h4 class="mb-3">Gửi tiền tiết kiệm</h4>
+    @if (ViewBag.Msg != null)
+    {
+        <h5 style="color:green">@ViewBag.Msg</h5>
+    }
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Mã sổ tiết kiệm</label>
+        <input type="text" class="form-control" name="MASTK" value="@ViewBag.STK" readonly>
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Số tiền gửi thêm</label>
+        <input type="text" class="form-control" name="SOTIEN" oninput="formatNumberInput(this)">
+        <input type="hidden" name="SOTIEN_HIDDEN" id="SOTIEN_HIDDEN">
+    </div>
+    <button type="submit" class="btn btn-primary" style="margin-top: 20px">Xác nhận</button>
+</form>
+<script>
+    function formatNumberInput(input) {
+        // Xóa bỏ dấu phẩy và khoảng trắng
+        var cleanValue = input.value.replace(/,/g, '').replace(/\s/g, '');
+
+        // Chuyển đổi giá trị thành số nguyên
+        var numberValue = parseInt(cleanValue, 10);
+
+        // Định dạng số với dấu phẩy ngăn cách hàng nghìn
+        var formattedValue = numberValue.toLocaleString('en-US');
+
+        // Gán giá trị định dạng vào trường input
+        input.value = formattedValue;
+
+        // Gán giá trị không có dấu phẩy cho biến ẩn
+        document.getElementById("SOTIEN_HIDDEN").value = cleanValue;
+    }
+</script>
+

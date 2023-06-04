@@ -1,0 +1,48 @@
+﻿@model HQT_CSDL.Models.SOTIETKIEM
+@{
+    ViewBag.Title = "TatToan";
+    var lai = Model.LOAITIETKIEM.LAISUAT;
+    lai = lai * 100;
+}
+
+<form action="/SoTietKiem/XacNhan" method="post" style="margin-top: 25px">
+    <h3>Xác nhận tất toán sổ tiết kiệm</h3>
+    @if (ViewBag.Msg != null)
+    {
+        <h4 style="color:@ViewBag.Style">@ViewBag.Msg</h4>
+    }
+    <input type="hidden" name="id" value="@Model.MASTK" />
+    <div class="mb-3">
+        <label class="form-label">Mã sổ tiết kiệm</label>
+        <h5>@Model.MASTK</h5>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Số tiền gửi</label>
+        <h5>@Model.SOTIENGUI</h5>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Ngày mở sổ</label>
+        <h5>@Model.NGAYMOSO</h5>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Ngày đến hạn</label>
+        <h5>@Model.NGAYDENHAN</h5>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Loại tiết kiệm</label>
+        <h5>@Model.LOAITIETKIEM.TENLOAITK</h5>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Lãi suất</label>
+        <h5>@lai%/ năm </h5>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Số tiền lãi có thể nhận được</label>
+        <h5>@String.Format("{0:N0}", ViewBag.SOTIENLAI) VNĐ</h5>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Số tháng đã gửi</label>
+        <h5>@ViewBag.SOTHANG</h5>
+    </div>
+    <button type="submit" class="btn btn-primary" style="margin-top: 20px">Xác nhận</button>
+</form>

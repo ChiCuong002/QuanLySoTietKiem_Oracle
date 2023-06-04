@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6742e612bf67492595242308f210df86" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.GIAODICH" Width="1.5" PointX="7.5" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.KHACHHANG" Width="1.5" PointX="8.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.LOAIHINHGD" Width="1.5" PointX="5.25" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.LOAITIETKIEM" Width="1.5" PointX="8.25" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.NHANVIEN" Width="1.5" PointX="5.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PHONGGD" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.QUAYGD" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.SOTIETKIEM" Width="1.5" PointX="10.5" PointY="4.5" IsExpanded="true" />
+        <AssociationConnector Association="Model.SYS_C007699" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SYS_C007700" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SYS_C007701" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SYS_C007695" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SYS_C007696" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SYS_C007693" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SYS_C007697" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SYS_C007688" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Model.BIENDONGSTK" Width="1.5" PointX="12.75" PointY="5.25" />
+        <EntityTypeShape EntityType="Model.CHUCVU" Width="1.5" PointX="10.375" PointY="1.375" />
+        <AssociationConnector Association="Model.SYS_C007816" />
+        <AssociationConnector Association="Model.SYS_C007810" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
